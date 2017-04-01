@@ -1,8 +1,7 @@
 const Koa = require('koa');
 const Router = require('koa-router');
 
-var exec = require('child-process-promise').exec;
-
+var exec = require('child-process').exec;
 
 const app = new Koa();
 const router = new Router();
@@ -18,8 +17,8 @@ router.get('/', async function (ctx, next) {
     '--filename',
     '/home/paperspace/Downloads/images.jpeg',
   ];
-  let {stdout, stderr} = await exec(args.join(' '));
-  ctx.body = stdout;
+
+  ctx.body = await execAsync(args.join(' '));
   next();
 });
 
@@ -28,3 +27,13 @@ app
   .use(router.allowedMethods());
 
 app.listen(3000);
+
+function execAsync(args){
+  return new Promise((resolve, reject)=>{
+    exec(args, (err, stdout, stderr)=>{
+      if(err) return reject(error);
+
+      resolve(stdout);
+    });
+  })
+}
