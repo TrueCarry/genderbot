@@ -31,7 +31,7 @@ app.listen(3000);
 function execAsync(args){
   return new Promise((resolve, reject)=>{
     exec(args, (err, stdout, stderr)=>{
-      if(err) return reject(error);
+      if(err) return reject(err);
 
       resolve(stdout);
     });
