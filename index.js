@@ -1,7 +1,7 @@
 const Koa = require('koa');
 const Router = require('koa-router');
 
-var exec = require('child-process').exec;
+var exec = require('child_process').exec;
 
 const app = new Koa();
 const router = new Router();
