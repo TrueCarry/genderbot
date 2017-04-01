@@ -18,7 +18,10 @@ router.get('/', async function (ctx, next) {
     '/home/paperspace/Downloads/images.jpeg',
   ];
 
-  ctx.body = await execAsync(args.join(' '));
+  let output = await execAsync(args.join(' '));
+  let regex = /Guess @ [0-9] [MF], prob = [0-9\.]+/g;
+  let result = regex.exec(output);
+  ctx.body = result;
   next();
 });
 
