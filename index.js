@@ -13,12 +13,10 @@ router.get('/', async function (ctx, next) {
     '/home/paperspace/rude-carnie/guess.py',
     '--model_dir',
     '/home/dpressel/dev/work/AgeGenderDeepLearning/Folds/tf/gen_test_fold_is_0/run-8766',
-    ' --class_type',
-    ' gender',
-    ' --requested_step',
-    ' 9999',
-    ' --filename',
-    ' /home/paperspace/Downloads/images.jpeg',
+    '--class_type',
+    'gender',
+    '--filename',
+    '/home/paperspace/Downloads/images.jpeg',
   ];
   let {stdout, stderr} = await exec(args.join(' '));
   ctx.body = stdout;
