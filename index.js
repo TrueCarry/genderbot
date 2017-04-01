@@ -21,7 +21,7 @@ router.get('/', async function (ctx, next) {
   let output = await execAsync(args.join(' '));
   let regex = /Guess @ [0-9] [MF], prob = [0-9\.]+/g;
   let result = regex.exec(output);
-  ctx.body = result;
+  ctx.body = JSON.stringify(result);
   next();
 });
 
