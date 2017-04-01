@@ -10,7 +10,7 @@ const router = new Router();
 router.get('/', async function (ctx, next) {
   let args = [
     'python2.7',
-    'guess.py',
+    '/home/paperspace/rude-carnie/guess.py',
     '--model_dir',
     '/home/dpressel/dev/work/AgeGenderDeepLearning/Folds/tf/gen_test_fold_is_0/run-8766',
     ' --class_type',
