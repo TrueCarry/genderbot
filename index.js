@@ -39,7 +39,7 @@ router.get('/', async function (ctx, next) {
 router.post('/', body, async function(ctx, next){
   console.log(this.request.body);
   // => POST body
-  this.body = JSON.stringify(this.request.body);
+  ctx.body = JSON.stringify(this.request.body);
 });
 
 app
