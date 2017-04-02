@@ -1,10 +1,12 @@
 const Koa = require('koa');
 const Router = require('koa-router');
+const Body = require('koa-body');
 
 var exec = require('child_process').exec;
 
 const app = new Koa();
 const router = new Router();
+const body = new Body();
 
 router.get('/', async function (ctx, next) {
   let args = [
@@ -20,13 +22,24 @@ router.get('/', async function (ctx, next) {
 
   let output = await execAsync(args.join(' '));
   let regex = /Guess @ ([0-9]) ([MF]), prob = ([0-9\.]+)/g;
-  let matches = [];
+  let results = [];
 
   var match;
-  while (match = regex.exec(output)) matches.push(match);
+  while (match = regex.exec(output)) {
+    results.push({
+      gender: match[2],
+      chance: parseFloat(match[3]),
+    });
+  }
 
-  ctx.body = JSON.stringify(matches);
+  ctx.body = JSON.stringify(results);
   next();
+});
+
+router.post('/', body, async function(ctx, next){
+  console.log(this.request.body);
+  // => POST body
+  this.body = JSON.stringify(this.request.body);
 });
 
 app
