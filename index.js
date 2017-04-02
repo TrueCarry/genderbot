@@ -53,7 +53,9 @@ router.post('/', body, async function(ctx, next){
     '/home/paperspace/Downloads/images.jpeg',
   ];
 
+  console.log("Args:", args.join(' '));
   let output = await execAsync(args.join(' '));
+  console.log("Output: ", output);
   let regex = /Guess @ ([0-9]) ([MF]), prob = ([0-9\.]+)/g;
   let results = [];
 
