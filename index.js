@@ -46,11 +46,11 @@ router.post('/', body, async function(ctx, next){
     'python2.7',
     '/home/paperspace/rude-carnie/guess.py',
     '--model_dir',
-    file.source.path,
+    '/home/dpressel/dev/work/AgeGenderDeepLearning/Folds/tf/gen_test_fold_is_0/run-8766',
     '--class_type',
     'gender',
     '--filename',
-    '/home/paperspace/Downloads/images.jpeg',
+    file.source.path,
   ];
 
   console.log("Args:", args.join(' '));
